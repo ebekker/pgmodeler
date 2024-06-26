@@ -16,7 +16,7 @@ jobs:
        shell: msys2 {0}
 
     steps:
-    - uses: actions/checkout@v2
+    #- uses: actions/checkout@v2
      
     - uses: msys2/setup-msys2@v2
       with:
@@ -38,7 +38,13 @@ jobs:
 
     - name: Resolve local deps
       run: |
+        echo "---C:/msys64/---"
         ls C:/msys64/
+        echo "---ls C:/msys64/mingw64/---"
         ls C:/msys64/mingw64/
+        echo "---ls C:/msys64/mingw64/bin/---"
         ls C:/msys64/mingw64/bin/
-        ls C:/msys64/mingw64/share/qt6/plugins/platforms/tls/
+        echo "---ls C:/msys64/mingw64/share/qt6/---"
+        ls C:/msys64/mingw64/share/qt6/ #plugins/platforms/tls/
+        echo "---ls C:/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
+        ls C:/msys64/mingw64/share/qt6/plugins/#platforms/tls/
