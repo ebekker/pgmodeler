@@ -62,7 +62,9 @@ jobs:
               libdouble-conversion.dll libfreetype-6.dll libgcc_s_seh-1.dll libglib-2.0-0.dll libgraphite2.dll \
               libharfbuzz-0.dll libiconv-2.dll libicudt*.dll libicuin*.dll libicuuc*.dll libintl-8.dll liblzma-5.dll \
               libmd4c.dll libpcre*.dll libpng16-16.dll libpq.dll libssl*.dll libstdc++-6.dll \
-              libwinpthread-1.dll libxml2-2.dll zlib1.dll D:/a/pgmodeler/pgmodeler/build
+              libwinpthread-1.dll libxml2-2.dll zlib1.dll \
+              Qt6Core.dll Qt6Gui.dll Qt6Widgets.dll \
+              D:/a/pgmodeler/pgmodeler/build
         ## Per: https://github.com/msys2/MINGW-packages/issues/11452#issuecomment-1445645003
         cp C:/Windows/System32/D3DCompiler_47.dll D:/a/pgmodeler/pgmodeler/build
         mkdir -p D:/a/pgmodeler/pgmodeler/build/qtplugins/tls
