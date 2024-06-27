@@ -1,0 +1,69 @@
+name: Windows build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, develop, 1.* ]
+    tags: 1.*
+    
+  pull_request:
+    branches: [ main, develop, 1.* ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        qt: ['6.x'] 
+    
+    defaults:
+      run:
+       shell: msys2 {0}
+
+    steps:
+    - uses: actions/checkout@v2
+     
+    - uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+        install: base-devel mingw-w64-x86_64-make mingw-w64-x86_64-clang mingw-w64-x86_64-postgresql mingw-w64-x86_64-qt6
+        ## Need to specify alt location to not conflict with existing MSYS2 install on GH Windows Baseline
+        ##  https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md#msys2
+        location:  c:/CICD/
+                     
+    # Workaround: Instead of using $GITHUB_WORKSPACE in PREFIX we actually use the path converted to unix-like
+    # since we're running the building inside msys2
+    - name: Running qmake
+      run: |
+        cd $GITHUB_WORKSPACE;
+        qmake-qt6 pgmodeler.pro -spec win32-clang-g++ -r PREFIX=D:/a/pgmodeler/pgmodeler/build \
+          XML_INC=$(cygpath -m /mingw64/include/libxml2) \
+          XML_LIB=$(cygpath -m /mingw64/bin/libxml2-2.dll) \
+          PGSQL_INC=$(cygpath -m /mingw64/include) \
+          PGSQL_LIB=$(cygpath -m /mingw64/bin/libpq.dll) \
+          CONFIG+=debug
+
+    - name: Building pgModeler
+      run: mingw32-make -j6
+     
+    - name: Deploying pgModeler
+      run: mingw32-make install
+
+    - name: Resolve Runtime Dependencies
+      run: |
+        echo -e "[Paths]\nPrefix=.\nPlugins=qtplugins\nLibraries=." > D:/a/pgmodeler/pgmodeler/build/qt.conf
+        cd C:/CICD/msys64/mingw64/bin/
+        cp D3Dcompiler_47.dll libb2-1.dll libbrotlicommon.dll libbrotlidec.dll libbz2-1.dll libcrypto-1_1-x64.dll \
+              libdouble-conversion.dll libfreetype-6.dll libgcc_s_seh-1.dll libglib-2.0-0.dll libgraphite2.dll \
+              libharfbuzz-0.dll libiconv-2.dll libicudt*.dll libicuin*.dll libicuuc*.dll libintl-8.dll liblzma-5.dll \
+              libmd4c.dll libpcre-1.dll libpcre2-16-0.dll libpng16-16.dll libpq.dll libssl-1_1-x64.dll libstdc++-6.dll \
+              libwinpthread-1.dll libxml2-2.dll zlib1.dll D:/a/pgmodeler/pgmodeler/build
+        mkdir D:/a/pgmodeler/pgmodeler/build/qtplugins/tls
+        cp -r C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/tls/* D:/a/pgmodeler/pgmodeler/build/qtplugins/tls      
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pgmodeler_installation_root
+        path: D:/a/pgmodeler/pgmodeler/build/
