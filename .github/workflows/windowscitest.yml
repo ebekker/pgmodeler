@@ -39,18 +39,18 @@ jobs:
 
     - name: Resolve local deps
       run: |
-        echo "---C:/msys64/---"
-        ls C:/msys64/
-        echo "---ls C:/msys64/mingw64/---"
-        ls C:/msys64/mingw64/
+        echo "---C:/my_msys64/---"
+        ls -al C:/my_msys64/
+        echo "---ls C:/my_msys64/mingw64/---"
+        ls -al C:/my_msys64/mingw64/
         
-        echo "---ls C:/msys64/mingw64/bin/---"
-        ls C:/msys64/mingw64/bin/
-        echo "---ls C:/msys64/mingw64/usr/bin/---"
-        ls C:/msys64/mingw64/usr/bin/
+        echo "---ls C:/my_msys64/mingw64/bin/---"
+        ls -al C:/my_msys64/mingw64/bin/
+        echo "---ls C:/my_msys64/mingw64/usr/bin/---"
+        ls -al C:/my_msys64/mingw64/usr/bin/
         
-        echo "---ls C:/msys64/mingw64/share/---"
-        ls C:/msys64/mingw64/share/ #plugins/platforms/tls/
+        echo "---ls C:/my_msys64/mingw64/share/---"
+        ls -al C:/my_msys64/mingw64/share/ #plugins/platforms/tls/
 
-        #echo "---ls C:/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
-        #ls C:/msys64/mingw64/share/qt6/plugins/#platforms/tls/
+        #echo "---ls C:/my_msys64/mingw64/share/qt6/plugins/platforms/tls/---"
+        #ls -al C:/my_msys64/mingw64/share/qt6/plugins/#platforms/tls/
