@@ -64,6 +64,7 @@ jobs:
               libmd4c.dll libpcre*.dll libpng16-16.dll libpq.dll libssl*.dll libstdc++-6.dll \
               libwinpthread-1.dll libxml2-2.dll zlib1.dll \
               Qt6Core.dll Qt6Gui.dll Qt6Widgets.dll \
+              Qt6PrintSupport.dll Qt6Network.dll Qt6Svg.dll libzstd.dll \
               D:/a/pgmodeler/pgmodeler/build
         ## Per: https://github.com/msys2/MINGW-packages/issues/11452#issuecomment-1445645003
         cp C:/Windows/System32/D3DCompiler_47.dll D:/a/pgmodeler/pgmodeler/build
