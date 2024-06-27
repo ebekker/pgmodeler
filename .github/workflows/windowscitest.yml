@@ -18,12 +18,12 @@ jobs:
     steps:
     #- uses: actions/checkout@v2
      
-    - uses: msys2/setup-msys2@v2
-      with:
-        msystem: MINGW64
-        location: c:/my_msys64/
-        update: true
-        install: base-devel mingw-w64-x86_64-make mingw-w64-x86_64-clang mingw-w64-x86_64-postgresql mingw-w64-x86_64-qt6
+    #- uses: msys2/setup-msys2@v2
+    #  with:
+    #    msystem: MINGW64
+    #    location: C:/CICD/
+    #    update: true
+    #    install: base-devel mingw-w64-x86_64-make mingw-w64-x86_64-clang mingw-w64-x86_64-postgresql mingw-w64-x86_64-qt6
                      
 #    - name: Resolve Runtime Dependencies
 #      run: |
@@ -39,18 +39,35 @@ jobs:
 
     - name: Resolve local deps
       run: |
-        echo "---C:/my_msys64/msys64/---"
-        ls -al C:/my_msys64/msys64/
-        echo "---ls C:/my_msys64/msys64/mingw64/---"
-        ls -al C:/my_msys64/msys64/mingw64/
-        
-        echo "---ls C:/my_msys64/msys64/mingw64/bin/---"
-        ls -al C:/my_msys64/msys64/mingw64/bin/
-        #echo "---ls C:/my_msys64/msys64/mingw64/usr/bin/---"
-        #ls -al C:/my_msys64/msys64/mingw64/usr/bin/
-        
-        echo "---ls C:/my_msys64/msys64/mingw64/share/---"
-        ls -al C:/my_msys64/msys64/mingw64/share/ #plugins/platforms/tls/
+        declare -a arr=(
+          "C:/CICD/msys64/"
+          "C:/CICD/msys64/mingw64/"
+          "C:/CICD/msys64/mingw64/bin/"
+          "C:/CICD/msys64/mingw64/usr/bin/"
+          "C:/CICD/msys64/mingw64/share/"
+          "C:/CICD/msys64/mingw64/share/qt6/"
+          "C:/CICD/msys64/mingw64/share/qt6/plugins"
+          "C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/tls/")
 
-        echo "---ls C:/my_msys64/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
-        ls -al C:/my_msys64/msys64/mingw64/share/qt6/plugins/platforms/tls/
+        for i in "${arr[@]}"
+        do
+          echo "--- $i ---"
+          if [ -d $i ]; then
+            ls -al $i
+          else
+            echo "!!! $i NOT FOUND !!!"
+          fi
+        done
+      
+        #echo "---C:/CICD/msys64/---"
+        #ls -al C:/CICD/msys64/
+        #echo "---ls C:/CICD/msys64/mingw64/---"
+        #ls -al C:/CICD/msys64/mingw64/
+        #echo "---ls C:/CICD/msys64/mingw64/bin/---"
+        #ls -al C:/CICD/msys64/mingw64/bin/
+        #echo "---ls C:/CICD/msys64/mingw64/usr/bin/---"
+        #ls -al C:/CICD/msys64/mingw64/usr/bin/
+        #echo "---ls C:/CICD/msys64/mingw64/share/---"
+        #ls -al C:/CICD/msys64/mingw64/share/ #plugins/platforms/tls/
+        #echo "---ls C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
+        #ls -al C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/tls/
