@@ -65,7 +65,7 @@ jobs:
               libwinpthread-1.dll libxml2-2.dll zlib1.dll D:/a/pgmodeler/pgmodeler/build
         ## Per: https://github.com/msys2/MINGW-packages/issues/11452#issuecomment-1445645003
         cp C:/Windows/System32/D3DCompiler_47.dll D:/a/pgmodeler/pgmodeler/build
-        mkdir D:/a/pgmodeler/pgmodeler/build/qtplugins/tls
+        mkdir -p D:/a/pgmodeler/pgmodeler/build/qtplugins/tls
         cp -r C:/CICD/msys64/mingw64/share/qt6/plugins/tls/* D:/a/pgmodeler/pgmodeler/build/qtplugins/tls      
 
     - uses: actions/upload-artifact@v4
