@@ -46,8 +46,8 @@ jobs:
         
         echo "---ls C:/my_msys64/msys64/mingw64/bin/---"
         ls -al C:/my_msys64/msys64/mingw64/bin/
-        echo "---ls C:/my_msys64/msys64/mingw64/usr/bin/---"
-        ls -al C:/my_msys64/msys64/mingw64/usr/bin/
+        #echo "---ls C:/my_msys64/msys64/mingw64/usr/bin/---"
+        #ls -al C:/my_msys64/msys64/mingw64/usr/bin/
         
         echo "---ls C:/my_msys64/msys64/mingw64/share/---"
         ls -al C:/my_msys64/msys64/mingw64/share/ #plugins/platforms/tls/
