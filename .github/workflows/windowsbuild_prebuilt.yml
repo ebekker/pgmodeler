@@ -68,8 +68,8 @@ jobs:
               D:/a/pgmodeler/pgmodeler/build
         ## Per: https://github.com/msys2/MINGW-packages/issues/11452#issuecomment-1445645003
         cp C:/Windows/System32/D3DCompiler_47.dll D:/a/pgmodeler/pgmodeler/build
-        mkdir -p D:/a/pgmodeler/pgmodeler/build/qtplugins
-        cp -r C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/* D:/a/pgmodeler/pgmodeler/build/qtplugins      
+        mkdir -p D:/a/pgmodeler/pgmodeler/build/qtplugins/platforms
+        cp -r C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/* D:/a/pgmodeler/pgmodeler/build/qtplugins/platforms
         mkdir -p D:/a/pgmodeler/pgmodeler/build/qtplugins/tls
         cp -r C:/CICD/msys64/mingw64/share/qt6/plugins/tls/* D:/a/pgmodeler/pgmodeler/build/qtplugins/tls      
 
