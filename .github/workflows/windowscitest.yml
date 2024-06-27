@@ -46,7 +46,9 @@ jobs:
           "C:/CICD/msys64/mingw64/usr/bin/"
           "C:/CICD/msys64/mingw64/share/"
           "C:/CICD/msys64/mingw64/share/qt6/"
-          "C:/CICD/msys64/mingw64/share/qt6/plugins"
+          "C:/CICD/msys64/mingw64/share/qt6/plugins/"
+          "C:/CICD/msys64/mingw64/share/qt6/plugins/tls/"
+          "C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/"
           "C:/CICD/msys64/mingw64/share/qt6/plugins/platforms/tls/")
 
         for i in "${arr[@]}"
