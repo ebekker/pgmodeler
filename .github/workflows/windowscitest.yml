@@ -52,5 +52,5 @@ jobs:
         echo "---ls C:/my_msys64/msys64/mingw64/share/---"
         ls -al C:/my_msys64/msys64/mingw64/share/ #plugins/platforms/tls/
 
-        #echo "---ls C:/my_msys64/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
-        #ls -al C:/my_msys64/msys64/mingw64/share/qt6/plugins/#platforms/tls/
+        echo "---ls C:/my_msys64/msys64/mingw64/share/qt6/plugins/platforms/tls/---"
+        ls -al C:/my_msys64/msys64/mingw64/share/qt6/plugins/platforms/tls/
